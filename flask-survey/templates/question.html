@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock %}
+
+{% block content %}
+<h2>{{question}}</h2>
+<form action="/answer/{{qnum}}" method="post">
+    {% for choice in choices %}
+        <input type="radio" id={{choice}} name={{qnum}} value={{choice}}>
+        <label for={{choice}}>{{choice}}</label><br>
+        
+    {% endfor %}
+    <br>
+    {% if last == True %}
+        <input type="submit" id='next_question'  formmethod="post" value="Submit Survey">
+        </input>
+    {% endif %}
+    {% if last == False %}
+        <input type="submit" id='next_question'  formmethod="post" value="Next Question">
+        </input>
+    {% endif %}
+</form>
+
+{% endblock %}
